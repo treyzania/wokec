@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+
+import os
+import sys
+import getopt
+import subprocess
+
+output = 'a.woke'
+
+# First we figure out the output.
+try:
+	oindex = sys.argv.index('-o')
+	if len(sys.argv) > oindex:
+		output = sys.argv[oindex + 1]
+	else:
+		print 'usage: ./wokec <in> [-o <out>]'
+except:
+	pass
+
+# Now compile it.
+subprocess.call(['cc', 'libwokec.c', '-o', output])
+
